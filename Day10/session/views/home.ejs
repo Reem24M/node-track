@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C Code Example</title>
+  <!-- not write ./public folder -->
+  <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+    <!-- <%-%> this is to import file ejs into anthor file ejs -->
+    <!-- <%= %> this is to print code js -->
+
+    <%- include('./partials/header') %>
+  <h1>Example of C Code</h1>
+
+  <pre><code>
+<span class="include">#include &lt;stdio.h&gt;</span>
+
+<span class="keyword">int</span> <span class="func">main</span>() {
+    <span class="func">printf</span>(<span class="string">"Hello, World!\n"</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+  </code></pre>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

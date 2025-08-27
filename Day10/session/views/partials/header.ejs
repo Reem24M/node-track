@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Header Demo</title>
+<style>
+  :root{
+    --bg:#0f172a;        /* slate-900 */
+    --fg:#e2e8f0;        /* slate-200 */
+    --muted:#94a3b8;     /* slate-400 */
+    --accent:#22d3ee;    /* cyan-400 */
+    --accent-2:#06b6d4;  /* cyan-500 */
+    --ring: rgba(34,211,238,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:#0b1022;color:var(--fg)}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(180deg,#0f172a 0%,#0f172aE6 60%,#0f172aCC 100%);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(148,163,184,.12);
+  }
+  .bar{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; gap:12px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+  }
+  .logo{
+    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+    background:radial-gradient(100% 100% at 0% 0%, var(--accent) 0%, var(--accent-2) 100%);
+    color:#051923; font-weight:900;
+    box-shadow:0 6px 18px rgba(34,211,238,.25);
+  }
+
+  /* nav */
+  nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0}
+  nav a{
+    color:var(--muted); font-weight:500; padding:8px 2px; display:inline-block;
+  }
+  nav a:hover, nav a.active{color:var(--fg)}
+  .cta{
+    padding:10px 14px; border-radius:12px; font-weight:600;
+    background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);
+    color:#001018; box-shadow:0 8px 24px rgba(34,211,238,.25);
+  }
+  .cta:focus{outline:2px solid var(--ring); outline-offset:3px}
+
+  /* hamburger (CSS-only) */
+  #menu-toggle{display:none}
+  .hamburger{
+    width:40px;height:40px;border-radius:10px;display:none;align-items:center;justify-content:center;
+    border:1px solid rgba(148,163,184,.18); cursor:pointer;
+  }
+  .hamburger span, .hamburger::before, .hamburger::after{
+    content:""; display:block; width:20px; height:2px; background:var(--fg); border-radius:2px;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .hamburger::before{margin-bottom:6px}
+  .hamburger::after{margin-top:6px}
+  #menu-toggle:checked + label.hamburger span{opacity:0}
+  #menu-toggle:checked + label.hamburger::before{transform:translateY(8px) rotate(45deg)}
+  #menu-toggle:checked + label.hamburger::after{transform:translateY(-8px) rotate(-45deg)}
+
+  /* mobile menu panel */
+  .panel{
+    display:flex; align-items:center; gap:20px;
+  }
+  .mobile{
+    display:none; flex-direction:column; gap:12px; padding:14px 0;
+  }
+  .mobile a{padding:8px 0; color:var(--muted)}
+  .mobile a:hover{color:var(--fg)}
+
+  /* responsive */
+  @media (max-width: 860px){
+    nav{display:none}
+    .hamburger{display:flex}
+    #menu-toggle:checked ~ .mobile{display:flex}
+    .panel{gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="bar">
+      <a class="brand" href="#">
+        <span class="logo">B</span>
+        <span>Brand Studio</span>
+      </a>
+
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle menu">
+      <label class="hamburger" for="menu-toggle" aria-hidden="true"><span></span></label>
+
+      <div class="panel">
+        <nav aria-label="Primary">
+          <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <a class="cta" href="#">Let’s Talk</a>
+      </div>
+    </div>
+
+    <!-- mobile drawer links -->
+    <div class="mobile">
+      <a href="#">Home</a>
+      <a href="#">Work</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a class="cta" href="#">Let’s Talk</a>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:40px 16px 120px">
+  <h1>Page Content</h1>
+  <p>This is a demo under a sticky, responsive header.</p>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "day7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node day07.js",
+    "start":"nodemon day07.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "readline": "^1.3.0"
+  }
+}
