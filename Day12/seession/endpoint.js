@@ -6,7 +6,11 @@ const {Register}=require('./controllers/users/registerController');
 const {SendOtp} =require('./controllers/users/sendotpController');
 const {app}=require('./index');
 
-
+const IsLoginedIn=async(username)=>{
+    let user= await UsersData.findOne({username});
+    if(user)return user;
+    else return null; 
+}
 
 app.post('/login',Login)
 
