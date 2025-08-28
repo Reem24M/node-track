@@ -32,6 +32,8 @@ const NewPassWord = async (req, res) => {
     user.password = newhashpass;
     await user.save();
 
+    await OtpData.deleteMany({ email });
+    
     return res.status(200).json({ message: "Password updated successfully" });
 
   } catch (error) {
