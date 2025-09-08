@@ -10,6 +10,9 @@ app.use(express.static(path.join(__dirname,'public')));
 app.set('json spaces',2)
 connectDB();
 
+app.use('/auth',require('./router/authRouter'));
+
+
 mongoose.connection.once('open',()=>{
     console.log("MongoDB connected");
     app.listen(process.env.PORT,()=>{

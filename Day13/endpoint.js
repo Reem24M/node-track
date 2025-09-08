@@ -16,15 +16,15 @@ const { UsersData } = require('./modules/users');
 //     else return null; 
 // }
 
-app.post('/login',Login)
+// app.post('/login',Login)
 
-app.post('/register',Register)
+// app.post('/register',Register)
 
-app.post('/newpass',NewPassWord)
+// app.post('/newpass',NewPassWord)
 
-app.post('/logout',Logout)
+// app.post('/logout',Logout)
 
-app.post('/send-otp',SendOtp)
+// app.post('/send-otp',SendOtp)
 
 app.post('/add-product',AddProduct)
 

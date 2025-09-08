@@ -10,20 +10,17 @@ app.use(express.static(path.join(__dirname,'public')));
 app.set('json spaces',2)
 connectDB();
 
+
+
+app.use('/auth',require('./router/authRouter'));
+app.use('/users',require('./router/usersRouter'));
+
+
 mongoose.connection.once('open',()=>{
     console.log("MongoDB connected");
     app.listen(process.env.PORT,()=>{
         console.log(`Server is running on port ${process.env.PORT}`);
     });
 });
-// mongoose.connection.on('error',(err)=>{
-//     console.log("MongoDB connection error");
-//     console.log(err);
-// });
-
-// app.listen(3000,()=>{
-//     connectDB();
-//     console.log("Server is running on port 3000");
-// });
 
 module.exports={app};

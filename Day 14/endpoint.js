@@ -1,50 +1,50 @@
-const { AddProduct, GetProductById, GetAllProducts } = require('./controllers/products/addproductController');
-const { DeleteProduct } = require('./controllers/products/deleteproductController');
-const { EditProduct } = require('./controllers/products/editproductcontroller');
-const { Login } = require('./controllers/users/loginController');
-const { Logout } = require('./controllers/users/logoutController');
-const { NewPassWord } = require('./controllers/users/newpassword.Controller');
-const {Register}=require('./controllers/users/registerController');
-const {SendOtp} =require('./controllers/users/sendotpController');
-const {app}=require('./index');
-const { UsersData } = require('./modules/users');
+// const { AddProduct, GetProductById, GetAllProducts } = require('./controllers/products/addproductController');
+// const { DeleteProduct } = require('./controllers/products/deleteproductController');
+// const { EditProduct } = require('./controllers/products/editproductcontroller');
+// const { Login } = require('./controllers/users/loginController');
+// const { Logout } = require('./controllers/users/logoutController');
+// const { NewPassWord } = require('./controllers/users/newpassword.Controller');
+// const {Register}=require('./controllers/users/registerController');
+// const {SendOtp} =require('./controllers/users/sendotpController');
+// const {app}=require('./index');
+// const { UsersData } = require('./modules/users');
 
-// const { UsersData } = require('../../Day12/seession/modules/users');
-// const IsLoginedIn=async(username)=>{
-//     let user= await UsersData.findOne({username});
-//     if(user)return user;
-//     else return null; 
-// }
+// // const { UsersData } = require('../../Day12/seession/modules/users');
+// // const IsLoginedIn=async(username)=>{
+// //     let user= await UsersData.findOne({username});
+// //     if(user)return user;
+// //     else return null; 
+// // }
 
-app.post('/login',Login)
+// app.post('/login',Login)
 
-app.post('/register',Register)
+// app.post('/register',Register)
 
-app.post('/newpass',NewPassWord)
+// app.post('/newpass',NewPassWord)
 
-app.post('/logout',Logout)
+// app.post('/logout',Logout)
 
-app.post('/send-otp',SendOtp)
+// app.post('/send-otp',SendOtp)
 
-app.post('/add-product',AddProduct)
+// app.post('/add-product',AddProduct)
 
-app.get('/product/:id',GetProductById)
+// app.get('/product/:id',GetProductById)
 
-// app.get('/',GetAllProducts)
+// // app.get('/',GetAllProducts)
 
-app.delete('/delete-product/:id',DeleteProduct)
+// app.delete('/delete-product/:id',DeleteProduct)
 
-app.put('/edit-product/:id',EditProduct)
+// app.put('/edit-product/:id',EditProduct)
 
-// app.get('/',async(req,res)=>{
-//     try{
-//         const age=req.params.age
+// // app.get('/',async(req,res)=>{
+// //     try{
+// //         const age=req.params.age
 
-//         let users=await UsersData.find({age:{$gte:age}})
-//     }catch(error){
-//         return res.status(500).json({message:error.message})
-//     }
-// })
+// //         let users=await UsersData.find({age:{$gte:age}})
+// //     }catch(error){
+// //         return res.status(500).json({message:error.message})
+// //     }
+// // })
 
 
-app.get()
+// app.get()
