@@ -10,7 +10,9 @@ app.use(express.static(path.join(__dirname,'public')));
 app.set('json spaces',2)
 connectDB();
 
-
+app.get('/',(req,res)=>{
+    res.send("Home Page from index.js")
+});
 
 mongoose.connection.once('open',()=>{
     console.log("MongoDB connected");
