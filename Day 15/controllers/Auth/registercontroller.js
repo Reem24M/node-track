@@ -1,4 +1,4 @@
-const { usersData } = require('../models/users');
+const { usersData } = require('../../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const register = async (req, res) => {
