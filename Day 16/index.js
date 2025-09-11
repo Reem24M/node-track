@@ -1,27 +1,47 @@
 const express=require('express');
-const path=require('path');
+require('dotenv').config()
 const app=express();
 const {connectDB}=require('./config/connectDb');
 const { mongoose } = require('mongoose');
-const{checkAdmin}=require('./middelware/checkAdmin')
-const{checkAuth}=require('./middelware/checkAuth');
-const { login } = require('./controllers/logincontroller');
-const { DeleteUser, Getallusers } = require('./controllers/userscontroller');
 app.use(express.json());
-app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'views'));
-app.use(express.static(path.join(__dirname,'public')));
+const session=require('express-session')
+const cors=require('cors')
 app.set('json spaces',2)
 connectDB();
-app.get('/',(req,res)=>{
-    res.send("Home Page from index.js")
-});
-app.use(checkAuth)
-app.post('/login',login)
-app.get('/users',Getallusers)
-app.use(checkAdmin)
-app.get('/delete/:id',DeleteUser)
 
+
+const ips = ['http://127.0.0.1:3000', "http://localhost:3000", "http://127.0.0.1:5500"];
+app.use(cors({
+    origin: (ip, callback) => {
+        try {
+            console.log(ip);
+            if (!ip || ips.includes(ip)) {
+                callback(null, true);
+            }
+            else {
+                callback("Not allowed by CORS");
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+
+    }
+}))
+
+app.use(session({
+    secret: process.env.SESSION_SECRET || "mySecretKey",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60, httpOnly: true, secure: false }
+}));
+
+
+app.use('/auth',require('./Routes/authRouter'))
+app.use('/orders',require('./Routes/orderRouter'))
+app.get('/',(req,res)=>{
+   return res.send("helo");
+})
 mongoose.connection.once('open',()=>{
     console.log("MongoDB connected");
     app.listen(process.env.PORT,()=>{
